@@ -24,7 +24,7 @@ To install the required dependencies, run:
 
 ```bash
 pip3 install -r requirements.txt
-
+```
 
 ---
 
