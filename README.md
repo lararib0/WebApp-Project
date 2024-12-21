@@ -50,6 +50,8 @@ pip3 install -r requirements.txt
 4. **Visit** [http://127.0.0.1:5000](http://127.0.0.1:5000) **to view the app**.
 
 
+
+
 ## File Structure
 
 - `utils.py`: Functions for database setup and data import.  
@@ -58,6 +60,8 @@ pip3 install -r requirements.txt
 - `server.py`: Starts the Flask server.  
 - `data/`: Contains CSV and database files.  
 - `templates/`: HTML templates for rendering pages.
+
+
 
 
 
