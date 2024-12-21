@@ -6,7 +6,7 @@ Assignment for Databases, 2º Year, 1º Semester
 ## Summary  
 This project aims to develop a web application displaying information about billionaires worldwide. It involves designing a relational database, importing data from a CSV file, and creating a Flask-based web interface for users to query and visualize data.
 
----
+
 
 ## Tools and Technologies Used  
 - **Database**: SQLite  
