@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billionaires</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">Billionaires Database</h1>
+    </header>
+    <main>
+        <!-- Seção About -->
+        <section id="about">
+            <h2>About</h2>
+            <p>
+                This page is designed to offer comprehensive insights into the world’s leading billionaires,
+                covering their rankings, countries of origin, industries, sources of wealth, and related economic indicators.
+                With the provided search tools, users can explore the data further and uncover more detailed perspectives.
+            </p>
+        </section>
+
+        <!-- Tabela de Estatísticas Principais -->
+        <section id="statistics">
+            <h2>Some Database Statistics</h2>
+            <table>
+              <tr>
+                <th>Items</th>
+                <th>Count</th>
+              </tr>
+              <tr>
+                <td>Billionaires</td>
+                <td>{{ total_billionaires }}</td>
+              </tr>
+              <tr>
+                <td>Industries</td>
+                <td>{{ industry }}</td>
+              </tr>
+              <tr>
+                <td>Countries</td>
+                <td>{{ country }}</td>
+              </tr>
+              <tr>
+                <td>Continents</td>
+                <td>{{ continent }}</td>
+              </tr>
+            </table>
+        </section>
+
+        <!-- Formulários de Busca -->
+        <section id="search-forms">
+            <h2>Search Tools</h2>
+
+            <form method="POST" action="/search">
+                <input type="text" name="search_term" placeholder="Enter a name..." required>
+                <button type="submit">Search</button>
+            </form>
+            <a href="/all" class="btn">List all by name</a>
+
+            <form method="POST" action="/search_by_id">
+                <input type="number" name="id" placeholder="Enter a billionaire´s ID..." required>
+                <button type="submit">Search</button>
+            </form>
+            <a href="/all_by_id" class="btn">List all by ID</a>
+
+            <form method="POST" action="/search_by_country">
+                <input type="text" name="country_name" placeholder="Enter a country´s name..." required>
+                <button type="submit">Search</button>
+            </form>
+            <p><a href="{{ url_for('countries_by_billionaires') }}">List all by the number of billionaires</a></p>
+        </section>
+
+        <!-- Link para as Indústrias -->
+        <section id="industries-link">
+            <h2>Explore Industries</h2>
+            <p>Each billionaire is associated with an industry, and as such, the link below
+                allows you to view the ranking of industries with the highest number of billionaires and the greatest wealth:</p>
+            <a href="{{ url_for('industries_by_wealth') }}" class="btn-minimalist">Industries by wealth</a>
+        </section>
+
+        <section id="gender-stats-link">
+            <h2>Gender Distribution</h2>
+            <p>View the distribution of billionaires by gender:</p>
+            <a href="{{ url_for('gender_stats') }}" class="btn-minimalist">Gender Distribution</a>
+        </section>
+
+        <!-- Seção para os Estados Unidos -->
+        <section id="us-specific">
+            <h2>United States: The Country with the Most Billionaires</h2>
+
+            <h3>Explore specific insights about billionaires in the United States:</h3>
+
+            <p>This list shows billionaires from the United States who are not associated with the "Technology" industry:</p>
+            <a href="/us_non_tech_billionaires" class="btn-minimalist">Non-Technology Billionaires</a>
+
+            <br><br>
+
+            <p>View cities in the United States with at least two billionaires, sorted by the number of billionaires:</p>
+            <a href="/us_cities_with_billionaires" class="btn-minimalist">Cities with Billionaires</a>
+        </section>
+    </main>
+</body>
+</html>
+<style>
+    .header-title {
+        color: black;
+        -webkit-text-stroke: 2px white;
+    }
+</style>

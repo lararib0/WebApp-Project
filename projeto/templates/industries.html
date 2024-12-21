@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">Industries</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Industry</th>
+                    <th>Total Associated Wealth (in millions of dollars)</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for industry in industries %}
+                <tr>
+                    <td><a href="{{ url_for('industry_details', industry_name=industry[1]) }}">{{ industry[1] }}</a></td>
+                    <td>{{ '%.2f' | format(industry[2]) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        </table>
+        <a href="/" class="btn">Home</a>
+    </main>
+</body>
+</html>

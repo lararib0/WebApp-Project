@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ industry_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">{{ industry_name }}</h1>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Wealth (in million of dollars)</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for billionaire in all_billionaires %}
+                    <tr>
+                        <td><a href="/billionaire/{{ billionaire[0] }}">{{ billionaire[0] }}</a></td>
+                        <td>{{ billionaire[1] }}</td>
+                        <td>{{ billionaire[2] }}</td>
+                        <td>{{ billionaire[3] }}</td>
+                        <td>{{ billionaire[4] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ url_for('industry_details', industry_name=industry_name) }}">Back</a>
+    </main>
+</body>
+</html>

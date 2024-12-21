@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ full_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">{{ full_name }}</h1>
+    </header>
+    <main>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% else %}
+            <div class="details">
+                <ul>
+                    <li><strong>Full name:</strong> {{ details[0] }}</li>
+                    <li><strong>Position:</strong> {{ details[1] }}</li>
+                    <li><strong>Birth Date:</strong> {{ details[2] }}</li>
+                    <li><strong>Gender:</strong> {{ details[3] }}</li>
+                    <li><strong>Wealth:</strong> {{ details[4] }} million of dollars</li>
+                    <li><strong>Age:</strong> {{ details[5] }}</li>
+                    <li><strong>Industry:</strong> {{ details[6] }}</li>
+                    <li><strong>Source:</strong> {{ details[7] }}</li>
+                    <li><strong>Citizenship:</strong> {{ details[8] }}</li>
+                    <li><strong>Country of Residence:</strong>
+                        <a href="{{ url_for('country_details', country_id=details[13]) }}">{{ details[9] }}</a>
+                    </li>
+
+                    <li><strong>City of Residence:</strong> {{ details[10] }}</li>
+
+                    {% if details[11] != "No subdivisions info" %}
+                        <li><strong>State:</strong> {{ details[11] }}</li>
+                    {% endif %}
+
+                    {% if details[12] != "No subdivisions info" %}
+                        <li><strong>Region:</strong> {{ details[12] }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="buttons">
+            <a href="/" class="btn">Home</a>
+            <a href="javascript:history.back()" class="btn">Back</a>
+        </div>
+    </main>
+</body>
+</html>

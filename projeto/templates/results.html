@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">Results</h1>
+    </header>
+    <main>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% else %}
+            {% if total_billionaires > 0 %}
+                <p class="info-extra">
+                    In {{ search_term }}, there are {{ total_billionaires }} billionaires,
+                    representing {{ '%.2f' % percentage }}% of the total {{ total_billionaires_in_database }} billionaires in the database.
+                </p>
+                <p class="country-details-link">
+                    <a href="/country/{{ results[0][5] }}">More informations about {{ search_term }}.</a>
+                </p>
+            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ful name</th>
+                        <th>Age</th>
+                        <th>Position</th>
+                        <th>Wealth (in million of dollars)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td><a href="/billionaire/{{ result[0] }}">{{ result[0] }}</a></td>
+                            <td>{{ result[1] }}</td>
+                            <td>{{ result[2] }}</td>
+                            <td>{{ result[3] }}</td>
+                            <td>{{ result[4] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        <a href="/" class="btn">Home</a>
+    </main>
+</body>
+</html>

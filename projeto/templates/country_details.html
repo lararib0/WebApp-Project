@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ country_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">{{ country_name }}</h1>
+    </header>
+    <main>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% else %}
+            <div class="details">
+                <ul>
+                    <li><strong>Continent:</strong> {{ country_details[0] }}</li>
+                    <li><strong>Population:</strong> {{ country_details[1] }}</li>
+                    <li><strong>Latitude:</strong> {{ country_details[2] }}</li>
+                    <li><strong>Longitude:</strong> {{ country_details[3] }}</li>
+                    <li><strong>CPI:</strong> {{ country_details[4] }}</li>
+                    <li><strong>CPI Variation:</strong> {{ country_details[5] }}</li>
+                    <li><strong>PIB:</strong> {{ country_details[6] }}</li>
+                    <li><strong>Gross Tertiary Education Enrollment:</strong> {{ country_details[7] }}</li>
+                    <li><strong>Gross Primary Education Enrollment:</strong> {{ country_details[8] }}</li>
+                    <li><strong>Life Expectancy:</strong> {{ country_details[9] }}</li>
+                    <li><strong>Tax Revenue:</strong> {{ country_details[10] }}</li>
+                    <li><strong>Tax Rate:</strong> {{ country_details[11] }}</li>
+
+
+                </ul>
+            </div>
+        {% endif %}
+        <div class="buttons">
+            <a href="/" class="btn">Home</a>
+            <a href="javascript:history.back()" class="btn">Back</a>
+        </div>
+    </main>
+</body>
+</html>

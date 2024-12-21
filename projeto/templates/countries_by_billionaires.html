@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">Countries</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Country</th>
+                    <th>Number of Billionaires</th>
+                    <th>ID of the richest billionaire</th>
+                    <th>Name of the richest billionaire</th>
+                    <th>Industry with the most associated wealth</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for country in countries %}
+                    <tr>
+                        <td><a href="{{ url_for('country_details', country_id=country[0]) }}">{{ country[0] }}</a></td>
+                        <td>{{ country[1] }}</td>
+                        <td>{{ country[2] }}</td>
+                        <td><a href="{{ url_for('billionaire_details', person_id=country[3]) }}">{{ country[3] }}</a></td>
+                        <td>{{ country[4] }}</td>
+                        <td><a href="{{ url_for('industry_details', industry_name=country[5]) }}">{{ country[5] }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ url_for('industries_by_wealth') }}">Back</a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Statistics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='header-image.jpg') }}" alt="Header Image" class="header-image">
+        <h1 class="header-title">Gender Statistics</h1>
+    </header>
+    <main>
+        <section>
+            <h2 class="section-title"></h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Gender</th>
+                        <th>Total Billionaires</th>
+                        <th>Percentage</th>
+                        <th>Most Common Industry</th>
+                        <th>Most Common Country</th>
+                        <th>Most Common Continent</th>
+                        <th>Average Wealth (in millions of dollars)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for info in gender_info %}
+                    <tr>
+                        <td>{{ 'Male' if info[0] == 'M' else 'Female' }}</td>
+                        <td>{{ info[1] }}</td>
+                        <td>{{ info[2] }}%</td>
+                        <td><a href="{{ url_for('industry_details', industry_name=info[3]) }}">{{ info[3] }}</a></td>
+                        <td>{{ info[4] }}</td>
+                        <td>{{ info[5] }}</td>
+                        <td>${{ info[6]|replace(",", "") }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="top-tables">
+            <h2 class="section-title">Top 3 Richest Men</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Position</th>
+                        <th>Wealth</th>
+                        <th>Industry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for man in top_men %}
+                    <tr>
+                        <td><a href="/billionaire/{{ man[0] }}">{{ man[0] }}</a></td>
+                        <td>{{ man[1] }}</td>
+                        <td>{{ man[2] }}</td>
+                        <td>{{ man[3] }}</td>
+                        <td>${{ man[4]|replace(",", "") }}</td>
+                        <td><a href="{{ url_for('industry_details', industry_name=man[5]) }}">{{ man[5] }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h2 class="section-title">Top 3 Richest Women</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Position</th>
+                        <th>Wealth</th>
+                        <th>Industry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for woman in top_women %}
+                    <tr>
+                        <td><a href="/billionaire/{{ woman[0] }}">{{ woman[0] }}</a></td>
+                        <td>{{ woman[1] }}</td>
+                        <td>{{ woman[2] }}</td>
+                        <td>{{ woman[3] }}</td>
+                        <td>${{ woman[4]|replace(",", "") }}</td>
+                        <td><a href="{{ url_for('industry_details', industry_name=woman[5]) }}">{{ woman[5] }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <a href="/" class="btn">Home</a>
+    </main>
+</body>
+</html>
