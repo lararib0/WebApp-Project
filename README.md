@@ -16,7 +16,6 @@ This project aims to develop a web application displaying information about bill
 - **Libraries**: pandas, sqlite3  
 
 
----
 
 
 ## Requirements  
@@ -26,7 +25,6 @@ To install the required dependencies, run:
 pip3 install -r requirements.txt
 ```
 
----
 
 
 ## How to Run the Application  
@@ -51,7 +49,6 @@ pip3 install -r requirements.txt
 
 4. **Visit** [http://127.0.0.1:5000](http://127.0.0.1:5000) **to view the app**.
 
----
 
 ## File Structure
 
@@ -63,7 +60,6 @@ pip3 install -r requirements.txt
 - `templates/`: HTML templates for rendering pages.
 
 
----
 
 
 ## Authors  
